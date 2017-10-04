@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -22,6 +23,24 @@ public class MainActivity extends Activity {
         setContentView(miTexto);*/
 
         //TextView contador = (TextView) R.id.contador;
+
+
+        Button boton = (Button) findViewById(R.id.reset);
+        final TextView contador = (TextView) findViewById(R.id.contador);
+
+        boton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                if(contador.getText().toString().contains("Contador")){
+                    contador.setText("Has jakeado el system");
+                }else{
+                    contador.setText("Contador: ");
+                }
+
+                return true;
+            }
+        });
     }
 
     protected void setValue(){
@@ -45,5 +64,6 @@ public class MainActivity extends Activity {
         cuenta = 0;
         setValue();
     }
+
 
 }
